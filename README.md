@@ -16,11 +16,12 @@ Escalado hacia abajo (Scale in): Cuando el consumo de CPU desciende por debajo d
 Scrip para la creacion de los recursos:
 
 azurecli
-Copy code
+* En esta linea de codigos es donde sse creara el conjunto escalonado donde se confugiraran el nombre que va a llevar el grupo de recursos, ($location = "eastus" ) es donde estara ubicado el recurso, el tamaño de  de la maquina virtual y los parametros en que se configurara el umbral de consumo de CPU para escalar de arriba o abajo y la duracion del periodo de la escala hacia arriba.
+
 # Variables de configuración
 $rgName = "myResourceGroup" # Nombre del grupo de recursos
 $location = "eastus" # Ubicación del recurso
-$vmssName = "myScaleSet" # Nombre del conjunto de escalado
+$vmssName = " myScaleSet" # Nombre del conjunto de escalado
 $vmSize = "Standard_DS2_v2" # Tamaño de la máquina virtual
 $instanceCount = 3 # Número inicial de instancias
 $minInstances = 1 # Número mínimo de instancias
@@ -28,6 +29,8 @@ $maxInstances = 5 # Número máximo de instancias
 $cpuThresholdScaleOut = 70 # Umbral de consumo de CPU para escalar hacia arriba (%)
 $cpuThresholdScaleIn = 30 # Umbral de consumo de CPU para escalar hacia abajo (%)
 $scaleOutCooldown = 10 # Duración del período de escala hacia arriba (minutos)
+
+Aqui es donde se hara la configuracion del conjunto escalado en PowerShell.
 
 # Crear el grupo de recursos
 az group create --name $rgName --location $location
@@ -77,9 +80,10 @@ az monitor autoscale rule create `
     --scale in `
     --condition "AverageLoad < $cpuThresholdScaleIn" `
     --scale in by 1
-Script para Destruir los Recursos:
-azurecli
-Copy code
+
+Para Destruir los Recursos:
+
+
 # Variables de configuración
 $rgName = "myResourceGroup" # Nombre del grupo de recursos
 $vmssName = "myScaleSet" # Nombre del conjunto de escalado
