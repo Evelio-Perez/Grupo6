@@ -1,13 +1,12 @@
-# informe final del proyecto
-proyecto final de practicas de especializacion.
- En este proyecto se abordara el escalado de maquinas virtuales
-Para habilitar el escalado automático en un conjunto de escalado, primero debe definir un perfil de escalado automático. Este perfil define la capacidad predeterminada, mínima y máxima del conjunto de escalado. Estos límites le permiten controlar el costo al no crear continuamente instancias de máquina virtual, y equilibrar un rendimiento aceptable con un número mínimo de instancias que permanecen en un evento de reducción horizontal.
-
-Las infraestructura  de maquinas virtuales (VMs) permiten crear y gestionar multiples sistemas operativos en un solo servidor fisico. 
+# Informe final del proyecto
+ En este proyecto se abordara el escalado de maquinas virtuales 
+ * las infraestructura  de maquinas virtuales (VMs) permiten crear y gestionar multiples sistemas operativos en un solo servidor fisico.
 
 para la creacion del scale set: se creo un conjunto de escalado llamado myScaleSet utilizando Azure CLI.Este conjunto se configuro para tener 3 VMs.Al crear un conjunto de escalado, Azure se encarga de distribuir automáticamente las VMs entre los nodos disponibles para lograr un equilibrio de carga efectivo.
 
-Política de Escalado Personalizado: Se utilizó una política de escalado personalizado con la siguiente configuración:
+*Política de Escalado Personalizado: Se utilizó una política de escalado personalizado con la siguiente configuración:
+
+ Para habilitar el escalado automático en un conjunto de escalado, primero debe definir un perfil de escalado automático. Este perfil define la capacidad predeterminada, mínima y máxima del conjunto de escalado. Estos límites le permiten controlar el costo al no crear continuamente instancias de máquina virtual, y equilibrar un rendimiento aceptable con un número mínimo de instancias que permanecen en un evento de reducción horizontal.
 
 Número mínimo de instancias: 1
 Número máximo de instancias: 5
@@ -31,7 +30,7 @@ $disminuye = "1"
 $porcentajein = "30"
 $timein = "5m"
 
-Aqui se hara la declaran las variables para la creacion de los grupos escalados.
+Aqui se hara la declaran las variables para la creacion del scale set
 
 DECLARACION DE VARIABLES DE LOS GRUPOS ESCALONADOS:
 $myResourceGroup = "Evelio"        #NOMBRE DEL GRUPO DE RECURSOS
@@ -50,7 +49,7 @@ $porcentajein = "30"               #PORCENTAJE PARA EL SACALEIN
 $disminuye = "1"                   #NUMERO DE DISMINUCION 
 $timein = "5m"                     #ESTABLECER TIEMPO DE LA DISMINUCION 
 
-    creacion del codigo en PowerShell.
+    #Creacion del codigo en PowerShell.
 #CREACION DE GRUPO DE RECURSOS:
 az group create --name $myResourceGroup --location $location 
 
@@ -66,3 +65,16 @@ az monitor autoscale rule create --resource-group $myResourceGroup --autoscale-n
 az monitor autoscale rule create --resource-group $myResourceGroup --autoscale-name $autoscalename --condition "Percentage CPU < $porcentajein avg $timein" --scale in $disminuye
 #CRECION DE UNA REGLA DE ESCALADO AUTOMATICO HORIZONTAL DE REDUCCION:
 az monitor autoscale rule create --resource-group $myResourceGroup --autoscale-name $autoscalename --condition "Percentage CPU < $porcentajein avg $timein" --scale in $disminuye
+
+#Eliminacion de recursos.
+En este  apartado se muestran  los  comandos necesarios para la eliminacion de los recursos escalonados este script primero elimina las instancias creadas y el conjunto escalonado correspondiente , el seguiente comando se encarga de  eliminar el grupo de recusos  
+
+#VARIABLES
+$myResourceGroup = "Evelio"        #NOMBRE DEL GRUPO DE SCRIPT
+$myScaleSet = "Evelio1"            #NOMBRE DEL SCALE SET
+
+#Eliminar el conjunto de escalado y sus recursos asociados
+az vmss delete --name $myscaleset --resource-group $myresourcegroup
+
+#Eliminar grupo de recursos.
+az group delete --name $myResourceGroup --no-wait --yes
