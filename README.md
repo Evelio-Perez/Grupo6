@@ -1,4 +1,4 @@
-# nelsonA
+# infirme final del proyecto
 proyecto final de practicas de especializacion.
  En este proyecto se abordara el escalado de maquinas virtuales
 Para habilitar el escalado automático en un conjunto de escalado, primero debe definir un perfil de escalado automático. Este perfil define la capacidad predeterminada, mínima y máxima del conjunto de escalado. Estos límites le permiten controlar el costo al no crear continuamente instancias de máquina virtual, y equilibrar un rendimiento aceptable con un número mínimo de instancias que permanecen en un evento de reducción horizontal.
@@ -31,9 +31,9 @@ $disminuye = "1"
 $porcentajein = "30"
 $timein = "5m"
 
-    Aqui se hara la declaran las variables para la creacion de los grupos escalados.
+Aqui se hara la declaran las variables para la creacion de los grupos escalados.
 
-DECLARACION DE VARIABLES:
+DECLARACION DE VARIABLES DE LOS GRUPOS ESCALONADOS:
 $myResourceGroup = "Evelio"        #NOMBRE DEL GRUPO DE RECURSOS
 $location = "eastus"               #LOCALIZACION
 $myScaleSet = "Evelio1"            #NOMBRE DEL SCALE SET
