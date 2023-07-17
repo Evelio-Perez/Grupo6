@@ -1,11 +1,11 @@
 # Informe final del proyecto
 
 #Colaboradores
-Evelio Jose Perez Rodriguez` 
-Nelson Steve Artola Mayorga`
-Maria Antonieta Mendoza Baez
-Ruidiguer Vladimir Hernandez Pineda
-Kendell Eliazib Lopez Hernandez
+`Evelio Jose Perez Rodriguez` 
+`Nelson Steve Artola Mayorga`
+`Maria Antonieta Mendoza Baez`
+`Ruidiguer Vladimir Hernandez Pineda`
+`Kendell Eliazib Lopez Hernandez`
 
  En este proyecto se abordara el escalado de maquinas virtuales 
  * las infraestructura  de maquinas virtuales (VMs) permiten crear y gestionar multiples sistemas operativos en un solo servidor fisico.
