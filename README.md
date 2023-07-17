@@ -1,8 +1,8 @@
 # Informe final del proyecto
 
 #Colaboradores
-Evelio Jose Perez Rodriguez 
-Nelson Steve Artola Mayorga
+Evelio Jose Perez Rodriguez` 
+Nelson Steve Artola Mayorga`
 Maria Antonieta Mendoza Baez
 Ruidiguer Vladimir Hernandez Pineda
 Kendell Eliazib Lopez Hernandez
